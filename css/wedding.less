@@ -1,3 +1,12 @@
+@import url(http://fonts.googleapis.com/css?family=Domine);
+
+// mixins and vars
+.standardFont {
+	font-family: 'Domine', 'serif';
+	-webkit-font-smoothing: antialiased;
+}
+
+// reset
 * {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -10,5 +19,8 @@
 html,
 body {
 	font-size: 16px;
+	.standardFont;
 	width: 100%;
 }
+
+// main styles
