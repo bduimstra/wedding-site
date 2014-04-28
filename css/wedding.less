@@ -1,10 +1,31 @@
 @import url(http://fonts.googleapis.com/css?family=Domine);
 
 // mixins and vars
+@white: #FFF;
+@black: #000;
+@lightBlue: #09455C;
+@darkBlue: #213556;
+@pink: #EF6362;
+@lightGreen: #C9E7DD;
+@darkGreen: #C4D224;
+@lightGrey: #F3F5F2;
+@darkGrey: #9E9A99;
+
 .standardFont {
 	font-family: 'Domine', 'serif';
 	-webkit-font-smoothing: antialiased;
 }
+
+.textShadow(@offsetX: 1px, @offsetY: 1px, @blur: 3px, @color: fade(@black, 50%)) {
+	text-shadow: @offsetX @offsetY @blur @color;
+}
+
+.boxShadow(@offsetX: 1px, @offsetY: 1px, @blur: 2px, @spread: 3px, @color: fade(@black, 50%)) {
+	-moz-box-shadow: @offsetX @offsetY @blur @spread @color;
+	-webkit-box-shadow: @offsetX @offsetY @blur @spread @color;
+	box-shadow: @offsetX @offsetY @blur @spread @color;
+}
+
 
 // reset
 * {
@@ -24,3 +45,24 @@ body {
 }
 
 // main styles
+body {
+	background-color: @pink;
+}
+
+header {
+	background-color: @darkGrey;
+	margin-top: 10%;
+	padding: 3rem 0;
+	text-align: center;
+	width: 100%;
+
+	h1 {
+		color: @white;
+		.textShadow;
+	}
+
+	p {
+		color: @white;
+		padding: 2rem;
+	}
+}
