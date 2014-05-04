@@ -16,7 +16,7 @@
 	-webkit-font-smoothing: antialiased;
 }
 
-.textShadow(@offsetX: 1px, @offsetY: 1px, @blur: 3px, @color: fade(@black, 50%)) {
+.textShadow(@offsetX: 1px, @offsetY: 1px, @blur: 1px, @color: fade(@black, 30%)) {
 	text-shadow: @offsetX @offsetY @blur @color;
 }
 
@@ -26,6 +26,34 @@
 	box-shadow: @offsetX @offsetY @blur @spread @color;
 }
 
+.transition(@target: all, @time: 200ms, @type: linear) {
+	-moz-transition: @target @time @type;
+	-o-transition: @target @time @type;
+	-webkit-transition: @target @time @type;
+	transition: @target @time @type;
+}
+
+.transform(@value) {
+	-moz-transform: @value;
+	-ms-transform: @value;
+	-o-transform: @value;
+	-webkit-transform: @value;
+	transform: @value;
+}
+
+.transformOrigin(@value) {
+	-moz-transform-origin: @value;
+	-ms-transform-origin: @value;
+	-o-transform-origin: @value;
+	-webkit-transform-origin: @value;
+	transform-origin: @value;
+}
+
+.borderRadius(@value) {
+	-moz-border-radius: @value;
+	-webkit-border-radius: @value;
+	border-radius: @value;
+}
 
 // reset
 * {
@@ -46,11 +74,11 @@ body {
 
 // main styles
 body {
-	background-color: @pink;
+	background-color: @lightGreen;
 }
 
 header {
-	background-color: @darkGrey;
+	background-color: lighten(@lightBlue, 50%);
 	margin-top: 10%;
 	padding: 3rem 0;
 	text-align: center;
@@ -58,11 +86,50 @@ header {
 
 	h1 {
 		color: @white;
+		margin-top: 200px;
 		.textShadow;
 	}
 
 	p {
-		color: @white;
+		color: @lightBlue;
 		padding: 2rem;
+	}
+
+	.heart {
+		height: 200px;
+		width: 200px;
+		left: 50%;
+		position: absolute;
+		.transform(translateX(-50%));
+		.transition;
+		.transformOrigin(100% 0);
+
+		&:hover {
+			.transform(scale(2));
+		}
+
+		.left,
+		.right {
+			border: 2px solid @lightBlue;
+			position: absolute;
+			width: 100px;
+			height: 160px;
+			background: lighten(@lightBlue, 20%);
+			.borderRadius(50px 50px 0 0);
+		}
+
+		.left {
+			border-right: none;
+			left: 100px;
+			.transform(rotate(-45deg));
+			.transformOrigin(0 100%);
+		}
+
+		.right {
+			border-left: none;
+			left: 0;
+			.transform(rotate(45deg));
+			.transformOrigin(100% 100%);
+		}
 	}
 }
